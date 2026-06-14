@@ -1,11 +1,11 @@
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
-  "medialend_testing_db",
-  "root",
-  "",
+  process.env.DB_NAME || "medialend_testing_db",
+  process.env.DB_USER || "root",
+  process.env.DB_PASSWORD || "",
   {
-    host: "localhost",
+    host: process.env.DB_HOST || "localhost",
     dialect: "mysql",
     logging: false,
   }
