@@ -1,15 +1,56 @@
 const request = require("supertest");
+const app = require("../app");
 
-describe("Login Mahasiswa", () => {
+describe("AUTH TEST", () => {
 
-  test("Login berhasil", async () => {
+  test("Login mahasiswa berhasil", async () => {
 
-    const response = await request(
-      "http://localhost:3000"
-    )
+    const response = await request(app)
       .post("/api/login-mahasiswa")
       .send({
         nim: "1234",
+        password: "123456"
+      });
+
+    expect(response.statusCode)
+      .toBe(200);
+
+  });
+
+  test("Login mahasiswa gagal jika NIM kosong", async () => {
+
+    const response = await request(app)
+      .post("/api/login-mahasiswa")
+      .send({
+        nim: "",
+        password: "123456"
+      });
+
+    expect(response.statusCode)
+      .toBe(400);
+
+  });
+
+  test("Login mahasiswa gagal jika password kosong", async () => {
+
+    const response = await request(app)
+      .post("/api/login-mahasiswa")
+      .send({
+        nim: "1234",
+        password: ""
+      });
+
+    expect(response.statusCode)
+      .toBe(400);
+
+  });
+
+  test("Login mahasiswa dengan NIM baru", async () => {
+
+    const response = await request(app)
+      .post("/api/login-mahasiswa")
+      .send({
+        nim: "987654321",
         password: "123456"
       });
 

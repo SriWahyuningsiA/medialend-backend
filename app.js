@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+
 const app = express();
 
 /* ================= DATABASE ================= */
@@ -21,9 +22,7 @@ const {
 
 /* ================= ROUTES ================= */
 
-const alatRoutes = require(
-  "./routes/alatRoutes"
-);
+const alatRoutes = require("./routes/alatRoutes");
 
 const peminjamanRoutes = require(
   "./routes/peminjamanRoutes"
@@ -104,54 +103,50 @@ app.get("/", (req, res) => {
 
 /* ================= DATABASE CONNECTION ================= */
 
-sequelize.authenticate()
+if (process.env.NODE_ENV !== "test") {
 
-  .then(() => {
+  sequelize.authenticate()
 
-    console.log(
-      "Database terhubung"
-    );
+    .then(() => {
 
-  })
+      console.log(
+        "Database terhubung"
+      );
 
-  .catch((err) => {
+    })
 
-    console.log(
-      "Database error"
-    );
+    .catch((err) => {
 
-    console.log(err);
+      console.log(
+        "Database error"
+      );
 
-  });
+      console.log(err);
 
-/* ================= SYNC TABLE ================= */
+    });
 
-sequelize.sync({ alter: true })
+  sequelize.sync({ alter: true })
 
-  .then(() => {
+    .then(() => {
 
-    console.log(
-      "Tabel siap"
-    );
+      console.log(
+        "Tabel siap"
+      );
 
-  })
+    })
 
-  .catch((err) => {
+    .catch((err) => {
 
-    console.log(
-      "Sync error"
-    );
+      console.log(
+        "Sync error"
+      );
 
-    console.log(err);
+      console.log(err);
 
-  });
+    });
 
-/* ================= SERVER ================= */
+}
 
-app.listen(3000, () => {
+/* ================= EXPORT APP ================= */
 
-  console.log(
-    "Server jalan di http://localhost:3000"
-  );
-
-});
+module.exports = app;
