@@ -10,6 +10,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      DB_NAME: medialend_testing_db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_HOST: 127.0.0.1
+
     services:
       mysql:
         image: mysql:8.0
