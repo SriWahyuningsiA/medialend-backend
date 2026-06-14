@@ -2,13 +2,29 @@ const request = require("supertest");
 const jwt = require("jsonwebtoken");
 const app = require("../app");
 
-const token = jwt.sign(
-  {
-    id: 1,
-    role: "mahasiswa"
-  },
-  "SECRET_KEY"
-);
+const db = require("../models");
+
+let token;
+
+beforeAll(async () => {
+
+  const mahasiswa =
+    await db.Mahasiswa.create({
+      nama: "Mahasiswa Test",
+      nim: "123456789",
+      email: "test@test.com",
+      password: "123456"
+    });
+
+  token = jwt.sign(
+    {
+      id: mahasiswa.id,
+      role: "mahasiswa"
+    },
+    "SECRET_KEY"
+  );
+
+});
 
 describe("MAHASISWA API TEST", () => {
 
