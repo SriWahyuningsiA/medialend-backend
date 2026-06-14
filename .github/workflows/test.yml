@@ -47,5 +47,8 @@ jobs:
             sleep 5
           done
 
+      - name: sync Database 
+        run: node sync-db.js
+
       - name: Run Tests
         run: npm test
