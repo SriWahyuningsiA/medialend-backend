@@ -169,6 +169,16 @@ sequelize.sync({ alter: true })
   });
 
 /* ================= SERVER ================= */
+app.get("/", (req, res) => {
+  res.send("Server MediaLend jalan");
+});
+
+app.get("/test", (req, res) => {
+  res.json({
+    status: "OK",
+    railway: true
+  });
+});
 
 const PORT = process.env.PORT || 3000;
 
