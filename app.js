@@ -1,8 +1,14 @@
+require("dotenv").config();
+
+console.log("MYSQLHOST:", process.env.MYSQLHOST);
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const app = express();
+
+app.set("trust proxy", 1);
 
 /* ================= DATABASE ================= */
 
@@ -148,10 +154,8 @@ sequelize.sync({ alter: true })
 
 /* ================= SERVER ================= */
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
 
-  console.log(
-    "Server jalan di http://localhost:3000"
-  );
-
+app.listen(PORT, () => {
+  console.log(`Server jalan di port ${PORT}`);
 });
