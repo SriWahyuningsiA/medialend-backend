@@ -182,6 +182,10 @@ app.get("/test", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
+console.log("SEBELUM LISTEN");
+
 app.listen(PORT, () => {
   console.log(`Server jalan di port ${PORT}`);
 });
+
+console.log("SETELAH LISTEN");
