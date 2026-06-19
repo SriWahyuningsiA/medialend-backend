@@ -8,6 +8,14 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const app = express();
 
+app.get("/health", (req, res) => {
+  console.log("HEALTH DIPANGGIL");
+  res.json({
+    success: true,
+    message: "Railway OK"
+  });
+});
+
 app.set("trust proxy", 1);
 
 /* ================= DATABASE ================= */
