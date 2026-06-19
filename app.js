@@ -92,6 +92,11 @@ app.use(
 
 app.use(express.json());
 
+app.get("/test", (req, res) => {
+  console.log("TEST DIPANGGIL");
+  res.send("TEST BERHASIL");
+});
+
 /* ================= ROUTES ================= */
 
 app.use(
