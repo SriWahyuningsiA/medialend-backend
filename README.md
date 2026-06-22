@@ -5,8 +5,8 @@ REST API untuk aplikasi peminjaman alat multimedia kampus.
 
 ## Tim Pengembang
 - Sri Wahyuningsih A
-- Nama Anggota 2
-- Nama Anggota 3
+- Elsa Febriyanti
+- Indah Ayu Anastasya
 
 ## Teknologi
 - Node.js
