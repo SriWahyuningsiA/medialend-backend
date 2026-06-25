@@ -1,5 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7c0a8d47-85e9-44de-ac83-8e0f9935bd30" />
-
+[![Node.js CI](https://github.com/SriWahyuningsiA/medialend-backend/actions/workflows/test.yml/badge.svg?branch=tugas-regression-test)](https://github.com/SriWahyuningsiA/medialend-backend/actions/workflows/test.yml)
 # MediaLend Backend
 
 REST API untuk aplikasi peminjaman alat multimedia kampus.
